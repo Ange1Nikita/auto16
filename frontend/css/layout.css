@@ -11,8 +11,13 @@
 }
 .container--narrow { max-width: var(--container-narrow); }
 
-/* Гарантия от горизонтального переполнения внутри секции */
-.section { padding-block: var(--s-16); overflow-x: clip; }
+.section { padding-block: var(--s-16); }
+
+/* Резиновый макет: дети flex/grid контейнеров должны уметь ужиматься */
+:where(.container, .grid, .grid--3, .grid--4, .cluster, .calc, .hero__inner, .site-header__inner, .site-header__brand, .site-header__right, .reviews-grid, .routes-grid, .fleet-grid, .calc__tariffs, .contacts-grid, .site-footer__top) > * {
+  min-width: 0;
+  min-height: 0;
+}
 @media (min-width: 1024px) { .section { padding-block: var(--s-24); } }
 
 .section--tight { padding-block: var(--s-12); }

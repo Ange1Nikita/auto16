@@ -18,12 +18,13 @@
   background: var(--c-white);
   border: 1px solid var(--c-border);
   border-radius: var(--r-xl);
-  padding: var(--s-6);
+  /* Резиновый паддинг: 16px на 320px → 32px на 768+ */
+  padding: clamp(1rem, 0.5rem + 2.5vw, 2rem);
   display: flex;
   flex-direction: column;
   gap: var(--s-5);
+  min-width: 0;
 }
-@media (min-width: 768px) { .calc__form { padding: var(--s-8); } }
 
 .calc__title {
   font-size: var(--fs-h3);
@@ -163,7 +164,7 @@
     var(--grad-brand-card);
   color: var(--c-white);
   border-radius: var(--r-lg);
-  padding: var(--s-5) var(--s-6);
+  padding: clamp(1rem, 0.5rem + 1.5vw, 1.5rem);
   display: flex;
   flex-direction: column;
   gap: var(--s-3);

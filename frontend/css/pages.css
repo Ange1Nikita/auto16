@@ -134,7 +134,8 @@
   width: 100%;
   max-width: 460px;
   margin-inline: auto;
-  padding: var(--s-8);
+  /* Резиновый паддинг: 20px на 320px, 32px на 768+ */
+  padding: clamp(1.25rem, 1rem + 1.5vw, 2rem);
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(14px) saturate(1.2);
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
@@ -342,9 +343,9 @@
   margin-top: var(--s-8);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  gap: var(--s-8);
+  gap: clamp(1.5rem, 1rem + 2vw, 2rem);
   align-items: center;
-  padding: var(--s-8);
+  padding: clamp(1.25rem, 0.75rem + 2vw, 2rem);
   border-radius: var(--r-xl);
   background:
     radial-gradient(circle at 88% 15%, hsl(48 100% 55% / 0.22), transparent 55%),
@@ -811,7 +812,7 @@
 .contacts-card {
   background: var(--c-stone-50);
   border-radius: var(--r-xl);
-  padding: var(--s-8);
+  padding: clamp(1.25rem, 0.75rem + 2vw, 2rem);
   display: flex;
   flex-direction: column;
   gap: var(--s-5);
