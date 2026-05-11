@@ -45,14 +45,43 @@
   gap: 0;
   color: inherit;
   white-space: nowrap;
-  height: 38px;
+  height: 56px;
   flex-shrink: 0;
+  transition: height var(--dur-base) var(--ease-out-quart);
 }
 .logo img {
   height: 100%;
   width: auto;
   object-fit: contain;
 }
+.site-header.is-scrolled .logo,
+.site-header--solid .logo { height: 48px; }
+
+/* Brand group: логотип + тагляйн справа */
+.site-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-width: 0;
+  flex-shrink: 0;
+}
+.site-header__tagline {
+  display: none;
+  padding-left: var(--s-3);
+  border-left: 1px solid currentColor;
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.01em;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+@media (min-width: 1280px) {
+  .site-header__tagline { display: inline-block; }
+}
+.site-header.is-scrolled .site-header__tagline,
+.site-header--solid .site-header__tagline { font-size: 13px; opacity: 0.7; }
+.site-nav { flex-shrink: 0; }
 /* На тёмном фоне инвертируем чёрный лого в белый */
 .site-header--on-dark .logo img,
 .mobile-menu .logo img,
@@ -141,7 +170,7 @@
   position: fixed;
   inset: 0;
   z-index: var(--z-modal);
-  background: var(--c-navy-900);
+  background: var(--grad-brand-card);
   color: var(--c-white);
   display: flex;
   flex-direction: column;
@@ -157,7 +186,7 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: var(--s-6);
-  border-bottom: 1px solid hsl(217 60% 30%);
+  border-bottom: 1px solid hsl(220 12% 28%);
 }
 .mobile-menu__list {
   flex: 1;
@@ -172,7 +201,7 @@
   font-weight: var(--fw-semibold);
   letter-spacing: -0.02em;
   color: var(--c-white);
-  border-bottom: 1px solid hsl(217 60% 30%);
+  border-bottom: 1px solid hsl(220 12% 28%);
 }
 .mobile-menu__contacts {
   margin-top: var(--s-8);

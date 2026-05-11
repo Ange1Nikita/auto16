@@ -5,7 +5,10 @@
 /* ---------- HERO ---------- */
 .hero {
   position: relative;
-  background: linear-gradient(180deg, var(--c-navy-900) 0%, var(--c-ink) 100%);
+  /* Mobile-first: чистый вертикальный градиент с мягким золотым акцентом сверху */
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, hsl(48 100% 55% / 0.10) 0%, transparent 60%),
+    linear-gradient(180deg, #4F5059 0%, #41424C 40%, #2A2B33 80%, #1B1C22 100%);
   color: var(--c-white);
   overflow: hidden;
   padding-top: calc(var(--header-h) + var(--s-12));
@@ -13,21 +16,38 @@
 }
 @media (min-width: 1024px) {
   .hero {
+    /* Десктоп: премиум-градиент с диагональю и боковыми бликами */
+    background: var(--grad-hero);
     padding-top: calc(var(--header-h) + var(--s-20));
     padding-bottom: var(--s-32);
   }
 }
 
-.hero::before {
+/* Тонкая золотая разделительная линия снизу */
+.hero::after {
   content: '';
   position: absolute;
-  top: 0; right: 0;
-  width: 70%; height: 100%;
-  background:
-    radial-gradient(circle at 70% 30%, hsl(48 100% 50% / 0.18), transparent 50%),
-    radial-gradient(circle at 90% 80%, hsl(217 70% 50% / 0.15), transparent 60%);
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, hsl(48 100% 50% / 0.45) 50%, transparent 100%);
   pointer-events: none;
-  z-index: 0;
+  z-index: 2;
+}
+
+/* Боковые радиальные блики — только десктоп, на мобилке мешают */
+.hero::before { content: none; }
+@media (min-width: 1024px) {
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 70%; height: 100%;
+    background:
+      radial-gradient(circle at 75% 25%, hsl(48 100% 55% / 0.12), transparent 55%),
+      radial-gradient(circle at 90% 85%, hsl(220 15% 60% / 0.08), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
 }
 
 .hero__inner {
@@ -84,7 +104,7 @@
   gap: var(--s-4);
   margin-top: var(--s-8);
   padding-top: var(--s-6);
-  border-top: 1px solid hsl(217 60% 25%);
+  border-top: 1px solid hsl(0 0% 100% / 0.12);
 }
 @media (min-width: 768px) { .hero__trust { grid-template-columns: repeat(4, 1fr); } }
 
@@ -107,6 +127,101 @@
   margin-inline: auto;
 }
 @media (max-width: 1023px) { .hero__visual { max-width: 380px; } }
+
+/* ---------- HERO MINI-FORM ---------- */
+.hero__form-card {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  margin-inline: auto;
+  padding: var(--s-8);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--r-xl);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.45);
+  color: var(--c-white);
+}
+@media (min-width: 1024px) { .hero__form-card { max-width: 480px; } }
+
+.hero__form-title {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  color: var(--c-white);
+}
+.hero__form-sub {
+  font-size: var(--fs-body-sm);
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 4px;
+}
+
+.hero__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  margin-top: var(--s-5);
+}
+.hero__form .input {
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--c-text);
+  border-color: transparent;
+  height: 48px;
+}
+.hero__form .input::placeholder { color: var(--c-text-muted); }
+.hero__form .input:focus {
+  background: var(--c-white);
+  border-color: var(--c-amber-500);
+  box-shadow: 0 0 0 3px hsl(48 100% 50% / 0.25);
+}
+
+.hero__form-row { position: relative; }
+.hero__form-row .input { padding-left: 38px; }
+.hero__form-pin {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+}
+.hero__form-pin--from { background: var(--c-amber-500); box-shadow: 0 0 0 4px hsl(48 100% 50% / 0.22); }
+.hero__form-pin--to   { background: var(--c-navy-900); box-shadow: 0 0 0 4px hsl(220 12% 25% / 0.55); }
+
+.hero__form-error {
+  font-size: var(--fs-caption);
+  color: #FFB4B4;
+  background: hsl(0 70% 50% / 0.18);
+  padding: 8px 12px;
+  border-radius: var(--r-sm);
+  border: 1px solid hsl(0 70% 60% / 0.35);
+}
+
+.hero__form-note {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+  margin-top: 4px;
+}
+.hero__form-note a { color: rgba(255, 255, 255, 0.8); text-decoration: underline; }
+
+.hero__form-success {
+  text-align: center;
+  padding: var(--s-4) 0;
+}
+.hero__form-success .calc-success__icon {
+  width: 56px; height: 56px;
+  margin: 0 auto var(--s-2);
+  background: var(--c-amber-500);
+  color: var(--c-navy-900);
+  border-radius: 50%;
+  display: grid; place-items: center;
+}
+.hero__form-success .icon { width: 28px; height: 28px; }
 
 /* ---------- ADVANTAGES (преимущества) ---------- */
 .adv-card {
@@ -232,10 +347,14 @@
   padding: var(--s-8);
   border-radius: var(--r-xl);
   background:
-    radial-gradient(circle at 90% 10%, hsl(48 100% 50% / 0.15), transparent 55%),
-    linear-gradient(135deg, var(--c-navy-900) 0%, var(--c-ink) 100%);
+    radial-gradient(circle at 88% 15%, hsl(48 100% 55% / 0.22), transparent 55%),
+    var(--grad-brand-card);
   color: var(--c-white);
   position: relative;
+  box-shadow:
+    0 30px 60px -20px hsl(220 15% 5% / 0.55),
+    inset 0 1px 0 hsl(0 0% 100% / 0.06);
+  border: 1px solid hsl(0 0% 100% / 0.06);
   overflow: hidden;
   border: 1px solid hsl(48 100% 50% / 0.25);
   box-shadow: var(--shadow-lg);
@@ -244,7 +363,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 10% 100%, hsl(217 70% 50% / 0.18), transparent 55%);
+  background: radial-gradient(circle at 10% 100%, hsl(48 100% 50% / 0.10), transparent 55%);
   pointer-events: none;
 }
 @media (max-width: 768px) {

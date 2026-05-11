@@ -33,6 +33,27 @@
 
 .calc__addresses { display: flex; flex-direction: column; gap: var(--s-3); position: relative; }
 
+/* Уведомление: только межгородние */
+.calc__notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-2);
+  margin-top: -8px;
+  padding: 10px 12px;
+  background: hsl(48 100% 92%);
+  border: 1px solid hsl(48 90% 75%);
+  border-radius: var(--r-md);
+  font-size: var(--fs-caption);
+  color: hsl(38 80% 25%);
+  line-height: 1.4;
+}
+.calc__notice svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: hsl(38 90% 45%);
+}
+.calc__notice b { color: hsl(38 80% 20%); font-weight: var(--fw-semibold); }
+
 /* Декоративная линия между полями адресов */
 .calc__addresses::before {
   content: '';
@@ -65,7 +86,7 @@
 }
 .calc-addr__pin--to {
   background: var(--c-navy-900);
-  box-shadow: 0 0 0 4px hsl(217 70% 20% / 0.15);
+  box-shadow: 0 0 0 4px hsl(220 12% 25% / 0.18);
 }
 .calc-addr .input { padding-right: var(--s-10); }
 
@@ -137,7 +158,9 @@
 
 /* Summary блок (расчёт стоимости) — всегда видим, prominent */
 .calc__summary {
-  background: linear-gradient(135deg, var(--c-navy-900) 0%, var(--c-ink) 100%);
+  background:
+    radial-gradient(circle at 90% 10%, hsl(48 100% 55% / 0.18), transparent 55%),
+    var(--grad-brand-card);
   color: var(--c-white);
   border-radius: var(--r-lg);
   padding: var(--s-5) var(--s-6);
@@ -146,6 +169,10 @@
   gap: var(--s-3);
   position: relative;
   overflow: hidden;
+  box-shadow:
+    0 24px 48px -16px hsl(220 15% 5% / 0.4),
+    inset 0 1px 0 hsl(0 0% 100% / 0.06);
+  border: 1px solid hsl(0 0% 100% / 0.06);
 }
 .calc__summary::before {
   content: '';

@@ -6,14 +6,29 @@
   /* ---- Бренд ---- */
   --c-white: #FFFFFF;
   --c-ink: #0A0F1F;
-  --c-navy-900: #0F2C56;     /* основной бренд-цвет */
-  --c-navy-800: #173B6F;
-  --c-navy-700: #1F4E8A;
-  --c-navy-600: #2A639E;
+  --c-navy-900: #41424C;     /* основной бренд-цвет (графит) */
+  --c-navy-800: #4F5059;
+  --c-navy-700: #5C5D67;
+  --c-navy-600: #6E707B;
+  --c-navy-deep: #2A2B33;    /* глубокая тень */
+  --c-navy-darker: #1B1C22;  /* почти чёрный */
   --c-amber-500: #FFC400;    /* акцент / CTA */
   --c-amber-400: #FFD23F;
   --c-amber-600: #D9A300;
   --c-amber-50: #FFFBE8;
+
+  /* ---- Премиум-градиенты ---- */
+  --grad-hero:
+    radial-gradient(ellipse at 15% 20%, hsl(48 100% 50% / 0.18) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 80%, hsl(220 20% 30% / 0.5) 0%, transparent 55%),
+    linear-gradient(135deg, #4F5059 0%, #41424C 35%, #2A2B33 70%, #1B1C22 100%);
+  --grad-cta:
+    radial-gradient(circle at 80% 50%, hsl(48 100% 50% / 0.22) 0%, transparent 45%),
+    linear-gradient(120deg, #5C5D67 0%, #41424C 50%, #2A2B33 100%);
+  --grad-footer:
+    linear-gradient(180deg, #2E2F37 0%, #1B1C22 100%);
+  --grad-brand-card:
+    linear-gradient(140deg, #4F5059 0%, #41424C 60%, #2A2B33 100%);
 
   /* ---- Графит ---- */
   --c-graphite-900: #141416;
@@ -104,7 +119,7 @@
   --shadow-lg: 0 16px 40px -8px hsl(220 30% 10% / 0.14);
   --shadow-xl: 0 32px 64px -16px hsl(220 30% 10% / 0.18);
   --shadow-glow-amber: 0 0 60px -10px hsl(48 100% 50% / 0.4);
-  --shadow-glow-navy:  0 0 60px -10px hsl(217 70% 20% / 0.5);
+  --shadow-glow-navy:  0 0 60px -10px hsl(220 12% 12% / 0.55);
 
   /* ---- Длительности ---- */
   --dur-instant: 100ms;

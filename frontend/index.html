@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0F2C56">
+  <meta name="theme-color" content="#41424C">
   <title>FARA — пассажирские перевозки между городами</title>
-  <meta name="description" content="FARA — лицензированные пассажирские перевозки. Рассчитайте стоимость на карте, выберите класс авто и оставьте заявку за минуту.">
+  <meta name="description" content="FARA — пассажирские перевозки между городами. Рассчитайте стоимость на карте, выберите класс авто и оставьте заявку за минуту.">
 
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,9 +27,12 @@
   <!-- ====== HEADER ====== -->
   <header class="site-header site-header--on-dark">
     <div class="container site-header__inner">
-      <a class="logo" href="/" aria-label="FARA — на главную">
-        <img src="assets/logo.jpg" alt="FARA">
-      </a>
+      <div class="site-header__brand">
+        <a class="logo" href="/" aria-label="FARA — на главную">
+          <img src="assets/logo.jpg" alt="FARA">
+        </a>
+        <span class="site-header__tagline">Междугородние<br>перевозки по всей<br>России</span>
+      </div>
 
       <nav class="site-nav" aria-label="Главная навигация">
         <a class="nav-link" href="#advantages">Преимущества</a>
@@ -84,7 +87,7 @@
     <section class="hero" data-reveal>
       <div class="container hero__inner">
         <div class="hero__content">
-          <span class="eyebrow eyebrow--light">Лицензированные перевозки · с 2014 года</span>
+          <span class="eyebrow eyebrow--light">Пассажирские перевозки · с 2014 года</span>
           <h1 class="hero__headline">
             Перевезём <em>между городами</em><br>
             быстро и безопасно
@@ -110,8 +113,8 @@
               <span class="hero__trust-label">поездок</span>
             </div>
             <div class="hero__trust-item">
-              <span class="hero__trust-value" data-count="15">0</span>
-              <span class="hero__trust-label">мин до перезвона</span>
+              <span class="hero__trust-value" data-count="5">0</span>
+              <span class="hero__trust-label">мин до подачи</span>
             </div>
             <div class="hero__trust-item">
               <span class="hero__trust-value" data-count="24" data-count-suffix="/7">0</span>
@@ -120,40 +123,44 @@
           </div>
         </div>
 
-        <div class="hero__visual" aria-hidden="true">
-          <svg viewBox="0 0 400 400" style="filter: drop-shadow(0 0 30px hsl(48 100% 50% / 0.2));">
-            <defs>
-              <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="hsl(217 60% 30%)" stroke-width="0.5" opacity="0.4"/>
-              </pattern>
-            </defs>
-            <rect width="400" height="400" fill="url(#hero-grid)"/>
-            <path d="M 60 320 Q 130 200, 200 240 T 350 80"
-                  fill="none" stroke="#FFC400" stroke-width="3"
-                  stroke-linecap="round" stroke-dasharray="6 6"
-                  style="animation: dashMove 30s linear infinite;"/>
-            <circle cx="60"  cy="320" r="10" fill="#FFC400"/>
-            <circle cx="60"  cy="320" r="20" fill="none" stroke="#FFC400" stroke-width="1" opacity="0.4">
-              <animate attributeName="r" values="10;28;10" dur="2.5s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.6;0;0.6" dur="2.5s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="350" cy="80"  r="10" fill="#FFC400"/>
-            <circle cx="350" cy="80"  r="20" fill="none" stroke="#FFC400" stroke-width="1" opacity="0.4">
-              <animate attributeName="r" values="10;28;10" dur="2.5s" begin="1.25s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.6;0;0.6" dur="2.5s" begin="1.25s" repeatCount="indefinite"/>
-            </circle>
-            <g transform="translate(170, 200)" fill="#FFFFFF">
-              <rect x="-30" y="-12" width="60" height="14" rx="3"/>
-              <path d="M -20 -12 L -16 -22 L 16 -22 L 20 -12 Z"/>
-              <circle cx="-18" cy="6" r="6" fill="#0F2C56"/>
-              <circle cx="-18" cy="6" r="3" fill="#FFFFFF"/>
-              <circle cx="18"  cy="6" r="6" fill="#0F2C56"/>
-              <circle cx="18"  cy="6" r="3" fill="#FFFFFF"/>
-            </g>
-            <text x="60"  y="345" fill="#FFFFFF" font-size="11" font-weight="600" font-family="Inter" text-anchor="middle">A</text>
-            <text x="350" y="105" fill="#FFFFFF" font-size="11" font-weight="600" font-family="Inter" text-anchor="middle">B</text>
-          </svg>
-        </div>
+        <aside class="hero__form-card" aria-labelledby="hero-form-title">
+          <h2 id="hero-form-title" class="hero__form-title">Быстрая заявка</h2>
+          <p class="hero__form-sub">Перезвоним за 15 минут — рассчитаем и подадим машину</p>
+
+          <form class="hero__form" data-hero-form novalidate>
+            <div class="hero__form-row">
+              <span class="hero__form-pin hero__form-pin--from"></span>
+              <input class="input" type="text" name="from" placeholder="Откуда" required autocomplete="off">
+            </div>
+            <div class="hero__form-row">
+              <span class="hero__form-pin hero__form-pin--to"></span>
+              <input class="input" type="text" name="to" placeholder="Куда" required autocomplete="off">
+            </div>
+            <input class="input" type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
+            <input class="input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+
+            <div class="hero__form-error" data-hero-error hidden></div>
+
+            <button class="btn btn--primary btn--lg btn--block" type="submit" data-hero-submit>
+              Отправить заявку
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+
+            <p class="hero__form-note">
+              Нажимая «Отправить», вы соглашаетесь с <a href="/privacy">обработкой персональных данных</a>
+            </p>
+          </form>
+
+          <div class="hero__form-success" data-hero-success hidden>
+            <div class="calc-success__icon">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 class="hero__form-title" style="margin-top:12px;">Заявка принята</h3>
+            <p class="hero__form-sub">Номер заявки: <span data-hero-id>—</span></p>
+            <p class="hero__form-sub">Диспетчер перезвонит в течение 15 минут.</p>
+            <button class="btn btn--ghost-light" type="button" data-hero-reset style="margin-top:16px;">Создать ещё одну</button>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -168,24 +175,17 @@
         <div class="grid grid--3" data-reveal-stagger>
           <div class="adv-card">
             <div class="adv-card__icon">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <h3 class="adv-card__title">Лицензия и страховка</h3>
-            <p class="adv-card__desc">Официальная лицензия на пассажирские перевозки. Каждая поездка застрахована на 2 млн ₽.</p>
-          </div>
-          <div class="adv-card">
-            <div class="adv-card__icon">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
             </div>
             <h3 class="adv-card__title">Опытные водители</h3>
-            <p class="adv-card__desc">Стаж от 7 лет, медосмотр перед каждым рейсом, знают регион «как свои пять пальцев».</p>
+            <p class="adv-card__desc">Стаж от 7 лет, знают регион «как свои пять пальцев».</p>
           </div>
           <div class="adv-card">
             <div class="adv-card__icon">
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
-            <h3 class="adv-card__title">Подача за 30 минут</h3>
-            <p class="adv-card__desc">Если выезд по городу — приедем за 30 минут. Загородный — оперативно по расписанию.</p>
+            <h3 class="adv-card__title">Подача за 5 минут</h3>
+            <p class="adv-card__desc">Если выезд по городу — приедем за 5 минут. Загородный — оперативно по расписанию.</p>
           </div>
           <div class="adv-card">
             <div class="adv-card__icon">
@@ -520,32 +520,6 @@
       </div>
     </section>
 
-    <!-- FLEET / НАШ ПАРК -->
-    <section class="section" id="fleet">
-      <div class="container">
-        <div class="section-head section-head--center" data-reveal>
-          <span class="eyebrow">Наш парк</span>
-          <h2 class="section-head__title">Все автомобили</h2>
-          <p class="section-head__lead">Кликните на любую машину, чтобы посмотреть фото в полном размере.</p>
-        </div>
-
-        <div class="fleet-filters" data-reveal>
-          <button class="fleet-filter" aria-pressed="true" data-fleet-filter="all">Все</button>
-          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="standard">Стандарт</button>
-          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="comfort">Комфорт</button>
-          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="comfort_plus">Комфорт+</button>
-          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="compact_van">Компактвэн</button>
-          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="minivan">Минивэн</button>
-          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="business">Бизнес</button>
-          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="premium">Премиум</button>
-        </div>
-
-        <div class="fleet-grid" data-fleet-grid data-reveal-stagger>
-          <!-- Карточки рендерятся из JS на основе FLEET data -->
-        </div>
-      </div>
-    </section>
-
     <!-- CALCULATOR -->
     <section class="section section--mute calc-section" id="calculator">
       <div class="container">
@@ -577,47 +551,52 @@
               </div>
             </div>
 
+            <p class="calc__notice">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Принимаем только <b>межгородние поездки</b> По городу не возим — для такси внутри города воспользуйтесь Яндекс.Go.
+            </p>
+
             <div class="field">
               <label class="field__label">Класс автомобиля</label>
               <div class="calc__tariffs">
                 <label class="radio-card">
-                  <input type="radio" name="tariff" value="standard" data-tariff-radio data-rate="25">
+                  <input type="radio" name="tariff" value="standard" data-tariff-radio data-rate="32" data-display-rate="25">
                   <span class="radio-card__title">Стандарт</span>
                   <span class="radio-card__desc">Polo, Rio, Solaris</span>
                   <span class="radio-card__price">от 25 ₽/км</span>
                 </label>
                 <label class="radio-card">
-                  <input type="radio" name="tariff" value="comfort" data-tariff-radio data-rate="30">
+                  <input type="radio" name="tariff" value="comfort" data-tariff-radio data-rate="35" data-display-rate="30">
                   <span class="radio-card__title">Комфорт</span>
                   <span class="radio-card__desc">Octavia, Passat</span>
                   <span class="radio-card__price">от 30 ₽/км</span>
                 </label>
                 <label class="radio-card is-selected">
-                  <input type="radio" name="tariff" value="comfort_plus" data-tariff-radio data-rate="35" checked>
+                  <input type="radio" name="tariff" value="comfort_plus" data-tariff-radio data-rate="40" data-display-rate="35" checked>
                   <span class="radio-card__title">Комфорт+</span>
                   <span class="radio-card__desc">Camry, K5</span>
                   <span class="radio-card__price">от 35 ₽/км</span>
                 </label>
                 <label class="radio-card">
-                  <input type="radio" name="tariff" value="compact_van" data-tariff-radio data-rate="40">
+                  <input type="radio" name="tariff" value="compact_van" data-tariff-radio data-rate="45" data-display-rate="40">
                   <span class="radio-card__title">Компактвэн</span>
                   <span class="radio-card__desc">Zafira · 4–5 пасс.</span>
                   <span class="radio-card__price">от 40 ₽/км</span>
                 </label>
                 <label class="radio-card">
-                  <input type="radio" name="tariff" value="minivan" data-tariff-radio data-rate="45">
+                  <input type="radio" name="tariff" value="minivan" data-tariff-radio data-rate="50" data-display-rate="45">
                   <span class="radio-card__title">Минивэн</span>
                   <span class="radio-card__desc">Palisade · 6–8 пасс.</span>
                   <span class="radio-card__price">от 45 ₽/км</span>
                 </label>
                 <label class="radio-card">
-                  <input type="radio" name="tariff" value="business" data-tariff-radio data-rate="50">
+                  <input type="radio" name="tariff" value="business" data-tariff-radio data-rate="55" data-display-rate="50">
                   <span class="radio-card__title">Бизнес</span>
                   <span class="radio-card__desc">BMW 5, Audi A6</span>
                   <span class="radio-card__price">от 50 ₽/км</span>
                 </label>
                 <label class="radio-card" style="grid-column: span 2;">
-                  <input type="radio" name="tariff" value="premium" data-tariff-radio data-rate="100">
+                  <input type="radio" name="tariff" value="premium" data-tariff-radio data-rate="100" data-display-rate="100">
                   <span class="radio-card__title">👑 Премиум</span>
                   <span class="radio-card__desc">Mercedes-Maybach, Mercedes E-class</span>
                   <span class="radio-card__price">от 100 ₽/км</span>
@@ -723,6 +702,32 @@
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLEET / НАШ ПАРК -->
+    <section class="section" id="fleet">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <span class="eyebrow">Наш парк</span>
+          <h2 class="section-head__title">Все автомобили</h2>
+          <p class="section-head__lead">Кликните на любую машину, чтобы посмотреть фото в полном размере.</p>
+        </div>
+
+        <div class="fleet-filters" data-reveal>
+          <button class="fleet-filter" aria-pressed="true" data-fleet-filter="all">Все</button>
+          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="standard">Стандарт</button>
+          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="comfort">Комфорт</button>
+          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="comfort_plus">Комфорт+</button>
+          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="compact_van">Компактвэн</button>
+          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="minivan">Минивэн</button>
+          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="business">Бизнес</button>
+          <button class="fleet-filter" aria-pressed="false" data-fleet-filter="premium">Премиум</button>
+        </div>
+
+        <div class="fleet-grid" data-fleet-grid data-reveal-stagger>
+          <!-- Карточки рендерятся из JS на основе FLEET data -->
         </div>
       </div>
     </section>
@@ -889,7 +894,7 @@
       <div class="site-footer__top">
         <div class="site-footer__brand">
           <span class="logo"><img src="assets/logo.jpg" alt="FARA"></span>
-          <p class="site-footer__brand-text">FARA — лицензированные пассажирские перевозки между городами Юга России. С 2014 года.</p>
+          <p class="site-footer__brand-text">FARA — пассажирские перевозки между городами Юга России. С 2014 года.</p>
         </div>
 
         <div>
@@ -951,6 +956,30 @@
       Позвонить
     </a>
     <a class="sticky-cta__btn sticky-cta__btn--cta" href="#calculator">Заказать</a>
+  </div>
+
+  <!-- City warning modal -->
+  <div class="modal" data-city-modal hidden role="dialog" aria-label="Только межгородние поездки">
+    <div class="modal__scrim" data-city-modal-close></div>
+    <div class="modal__content">
+      <button class="btn-icon" data-city-modal-close style="position: absolute; top: 16px; right: 16px;" aria-label="Закрыть">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div style="text-align:center;">
+        <div style="width:64px;height:64px;margin:0 auto var(--s-4);background:hsl(0 70% 50% / 0.12);color:var(--c-danger);border-radius:50%;display:grid;place-items:center;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3 class="t-h3">Только межгородние поездки</h3>
+        <p class="t-muted" style="margin-top: 12px;">
+          Адреса отправления и назначения находятся <b>в одном городе</b>.
+          Мы возим только между городами — внутригородские заказы не выполняем.
+        </p>
+        <p class="t-muted" style="margin-top: 8px;">
+          Для поездок по городу удобнее воспользоваться сервисами такси (Яндекс.Go и т.п.).
+        </p>
+        <button class="btn btn--primary btn--lg btn--block" type="button" data-city-modal-close style="margin-top: 24px;">Понятно</button>
+      </div>
+    </div>
   </div>
 
   <!-- Callback modal -->

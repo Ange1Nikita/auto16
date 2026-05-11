@@ -19,7 +19,8 @@ const state = {
   toAddr: null,
   distanceKm: 0,
   durationMin: 0,
-  rate: 35,
+  rate: 40,         // реальный множитель — только для расчёта суммы
+  displayRate: 35,  // что показывается пользователю в строке «Тариф»
   tariffName: 'Комфорт+',
   total: 0
 };
@@ -193,14 +194,16 @@ function setupSuggest(input, suggestEl, statusEl, isFrom) {
       if (!obj) throw new Error('not geocoded');
       const coords = obj.geometry.getCoordinates();
       const fullName = obj.getAddressLine();
-      const addr = { name: fullName, coords };
+      const localities = (typeof obj.getLocalities === 'function' ? obj.getLocalities() : []) || [];
+      const locality = (localities[0] || '').toString().trim().toLowerCase();
+      const addr = { name: fullName, coords, locality };
       if (isFrom) state.fromAddr = addr;
       else state.toAddr = addr;
       lastResolvedQuery = input.value.trim();
       input.value = fullName; // нормализуем
       lastResolvedQuery = fullName;
       setInputStatus('ok');
-      console.log(`[calc] ${isFrom ? 'FROM' : 'TO'}:`, fullName, coords);
+      console.log(`[calc] ${isFrom ? 'FROM' : 'TO'}:`, fullName, coords, `[city: ${locality || '—'}]`);
       tryBuildRoute();
     } catch (e) {
       console.error('[calc] geocode error', e);
@@ -208,6 +211,27 @@ function setupSuggest(input, suggestEl, statusEl, isFrom) {
       setInputStatus('error');
     }
   }
+}
+
+/* === Проверка: одно ли это город === */
+function isSameCity() {
+  const a = state.fromAddr?.locality;
+  const b = state.toAddr?.locality;
+  return !!(a && b && a === b);
+}
+
+/* === Модалка-предупреждение «Только межгородние» === */
+function showCityWarningModal() {
+  const m = document.querySelector('[data-city-modal]');
+  if (!m) return;
+  m.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+function hideCityWarningModal() {
+  const m = document.querySelector('[data-city-modal]');
+  if (!m) return;
+  m.hidden = true;
+  document.body.style.overflow = '';
 }
 
 function removeRouteFromMap() {
@@ -224,6 +248,15 @@ async function tryBuildRoute() {
   }
   if (sameCoords(state.fromAddr.coords, state.toAddr.coords)) {
     setStatus('Адреса совпадают', 'error');
+    return;
+  }
+  if (isSameCity()) {
+    setStatus('Только межгородние поездки', 'error');
+    showCityWarningModal();
+    removeRouteFromMap();
+    state.distanceKm = 0;
+    state.durationMin = 0;
+    updateSummary();
     return;
   }
   if (!map) {
@@ -250,7 +283,7 @@ async function tryBuildRoute() {
       iconCaption: 'B', balloonContent: state.toAddr.name
     }, {
       preset: 'islands#blueStretchyIcon',
-      iconColor: '#0F2C56'
+      iconColor: '#41424C'
     });
     map.geoObjects.add(placemarkA);
     map.geoObjects.add(placemarkB);
@@ -344,12 +377,12 @@ function updateSummary() {
     timeEl.textContent = has ? formatDuration(state.durationMin) : '—';
     timeEl.classList.toggle('calc__summary-value--placeholder', !has);
   }
-  // Тариф (всегда виден — выбран какой-то)
-  setText('[data-summary-rate]', `${state.rate} ₽/км · ${state.tariffName}`);
-  // Итого
+  // Тариф (показываем только название, без цены за км)
+  setText('[data-summary-rate]', state.tariffName);
+  // Итого — без слова «от»
   const totalEl = document.querySelector('[data-summary-total]');
   if (totalEl) {
-    totalEl.textContent = has ? `от ${formatRub(state.total)}` : formatRub(state.total);
+    totalEl.textContent = formatRub(state.total);
     totalEl.classList.toggle('calc__summary-total-value--zero', !has);
   }
   // Hint
@@ -385,6 +418,7 @@ function escapeHtml(s) {
 async function submitOrder(form) {
   if (!state.fromAddr?.name) return alert('Укажите адрес отправления');
   if (!state.toAddr?.name) return alert('Укажите адрес назначения');
+  if (isSameCity()) { showCityWarningModal(); return; }
 
   const name = form.querySelector('[data-calc-name]').value.trim();
   const phone = form.querySelector('[data-calc-phone]').value.trim();
@@ -469,11 +503,13 @@ export async function initCalculator() {
     r.addEventListener('change', () => {
       if (!r.checked) return;
       state.rate = +r.dataset.rate;
+      state.displayRate = +(r.dataset.displayRate ?? r.dataset.rate);
       state.tariffName = r.closest('.radio-card')?.querySelector('.radio-card__title')?.textContent.trim() || '';
       updateSummary();
     });
     if (r.checked) {
       state.rate = +r.dataset.rate;
+      state.displayRate = +(r.dataset.displayRate ?? r.dataset.rate);
       state.tariffName = r.closest('.radio-card')?.querySelector('.radio-card__title')?.textContent.trim() || '';
     }
   });
@@ -488,6 +524,14 @@ export async function initCalculator() {
 
   form.addEventListener('submit', e => { e.preventDefault(); submitOrder(form); });
   form.querySelector('[data-calc-reset]')?.addEventListener('click', resetForm);
+
+  // City warning modal — закрытие
+  document.querySelectorAll('[data-city-modal-close]').forEach(el => {
+    el.addEventListener('click', hideCityWarningModal);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') hideCityWarningModal();
+  });
 
   // Сразу отрисовываем summary с дефолтным тарифом
   updateSummary();

@@ -11,6 +11,7 @@ import { initCalculator } from './modules/calculator.js';
 import { initCallback } from './modules/callback.js';
 import { initFormsMask } from './modules/forms.js';
 import { initFleet } from './modules/fleet.js';
+import { initHeroForm } from './modules/hero-form.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initRadioCards();
   initFormsMask();
+  initHeroForm();
   initCalculator();
   initCallback();
   initFleet();
