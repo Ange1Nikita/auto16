@@ -137,22 +137,27 @@
 /* Burger */
 .btn-burger {
   width: 44px; height: 44px;
-  display: grid;
+  display: grid !important;        /* перекрывает любой случайный display:none */
   place-items: center;
   border-radius: var(--r-sm);
   background: transparent;
   border: 0;
   cursor: pointer;
-  /* Цвет линий — белый по умолчанию (шапка над тёмным hero),
-     тёмный когда шапка стала светлой при скролле */
+  /* Линии: белые поверх тёмного hero, тёмные при scrolled-шапке.
+     Drop-shadow гарантирует видимость даже если фон под шапкой
+     совпадает по цвету с линиями. */
   color: var(--c-white);
-  transition: color var(--dur-base);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+  transition: color var(--dur-base), filter var(--dur-base);
+  /* Заметная зона клика */
+  flex-shrink: 0;
 }
 .site-header.is-scrolled .btn-burger,
 .site-header--solid .btn-burger {
   color: var(--c-text);
+  filter: none;
 }
-@media (min-width: 1024px) { .btn-burger { display: none; } }
+@media (min-width: 1024px) { .btn-burger { display: none !important; } }
 
 .btn-burger__lines { position: relative; width: 24px; height: 18px; }
 .btn-burger__lines::before,
