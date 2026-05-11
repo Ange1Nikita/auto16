@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Диспетчерская — Автоперевозки</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- LOGIN VIEW -->
+  <div class="auth-view" data-view="login">
+    <div class="auth-card">
+      <div class="auth-card__brand" style="display: flex; align-items: center; justify-content: center;">
+        <img src="../assets/logo.jpg" alt="FARA" style="height: 56px; width: auto;">
+      </div>
+      <h1 class="t-h2" style="margin-top: 24px;">Диспетчерская</h1>
+      <p class="t-muted" style="margin-top: 4px;">Войдите чтобы управлять заявками</p>
+
+      <form class="stack-3" style="margin-top: 32px;" data-login-form novalidate>
+        <div class="field">
+          <label class="field__label" for="loginUser">Логин</label>
+          <input class="input input--lg" id="loginUser" name="username" type="text" autocomplete="username" required value="admin">
+        </div>
+        <div class="field">
+          <label class="field__label" for="loginPass">Пароль</label>
+          <input class="input input--lg" id="loginPass" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <div class="field__error" data-login-error hidden></div>
+        <button class="btn btn--brand btn--lg btn--block" type="submit">Войти</button>
+        <p class="t-caption t-muted" style="text-align: center;">Стартовые данные: <code>admin / admin</code></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- APP VIEW -->
+  <div class="admin-app" data-view="app" hidden>
+    <header class="admin-header">
+      <div class="admin-header__brand">
+        <img src="../assets/logo.jpg" alt="FARA" style="height: 32px; width: auto;">
+        <strong style="margin-left: 12px;">Диспетчерская</strong>
+      </div>
+      <div class="admin-header__right">
+        <a class="btn btn--ghost btn--sm" href="../index.html" target="_blank">Открыть сайт ↗</a>
+        <span class="admin-user">
+          <div class="avatar avatar--brand avatar--sm" data-user-initials>А</div>
+          <span data-user-name>—</span>
+        </span>
+        <button class="btn btn--text btn--sm" data-logout>Выйти</button>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <!-- Stats row -->
+      <div class="admin-stats" data-stats>
+        <div class="stat-card">
+          <div class="stat-card__label">Всего заявок</div>
+          <div class="stat-card__value" data-stat-total>—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__label">Новых</div>
+          <div class="stat-card__value" data-stat-new>—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__label">В работе</div>
+          <div class="stat-card__value" data-stat-inwork>—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__label">Завершено</div>
+          <div class="stat-card__value" data-stat-completed>—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__label">Выручка (выполн.)</div>
+          <div class="stat-card__value" data-stat-revenue>—</div>
+        </div>
+      </div>
+
+      <!-- Filters + table -->
+      <div class="admin-toolbar">
+        <div class="cluster">
+          <button class="chip" aria-pressed="true" data-status-filter="">Все</button>
+          <button class="chip" aria-pressed="false" data-status-filter="new">Новые</button>
+          <button class="chip" aria-pressed="false" data-status-filter="in_work">В работе</button>
+          <button class="chip" aria-pressed="false" data-status-filter="driver_assigned">Водитель назначен</button>
+          <button class="chip" aria-pressed="false" data-status-filter="completed">Завершено</button>
+          <button class="chip" aria-pressed="false" data-status-filter="cancelled">Отменено</button>
+        </div>
+        <div class="cluster">
+          <input class="input input--sm" type="search" placeholder="Поиск по имени, телефону, адресу" data-search style="width: 280px;">
+          <button class="btn btn--ghost btn--sm" data-export>
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            CSV
+          </button>
+          <button class="btn btn--ghost btn--sm" data-refresh aria-label="Обновить">
+            <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            Обновить
+          </button>
+        </div>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Дата</th>
+              <th>Маршрут</th>
+              <th>Клиент</th>
+              <th class="t-num">Сумма</th>
+              <th>Тариф</th>
+              <th>Статус</th>
+              <th>Водитель</th>
+            </tr>
+          </thead>
+          <tbody data-orders-list>
+            <tr><td colspan="8" class="admin-table__empty">Загрузка…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <!-- Order detail drawer -->
+    <div class="drawer" data-drawer hidden>
+      <div class="drawer__scrim" data-drawer-close></div>
+      <aside class="drawer__panel">
+        <div class="drawer__head">
+          <div>
+            <span class="t-caption t-muted">Заявка</span>
+            <h2 class="t-h3" data-drawer-id>#—</h2>
+          </div>
+          <button class="btn-icon" data-drawer-close aria-label="Закрыть">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <div class="drawer__body" data-drawer-body>
+          <!-- Заполняется JS -->
+        </div>
+      </aside>
+    </div>
+
+    <!-- Toast region -->
+    <div class="toast-region" aria-live="polite"></div>
+  </div>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

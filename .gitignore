@@ -1,0 +1,27 @@
+# ── Python / FastAPI backend ─────────────────────────
+backend/.venv/
+backend/__pycache__/
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+backend/.env
+backend/*.db
+backend/*.sqlite
+backend/*.sqlite3
+
+# ── IDE / OS ─────────────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ── Логи и временное ──────────────────────────────────
+*.log
+.cache/
+.tmp/
+
+# ── Большие исходники изображений (опц.) ──────────────
+# раскомментируй, если фото машин не нужны в репо:
+# Машины/
