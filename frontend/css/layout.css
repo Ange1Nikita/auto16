@@ -13,8 +13,10 @@
 
 .section { padding-block: var(--s-16); }
 
-/* Резиновый макет: дети flex/grid контейнеров должны уметь ужиматься */
-:where(.container, .grid, .grid--3, .grid--4, .cluster, .calc, .hero__inner, .site-header__inner, .site-header__brand, .site-header__right, .reviews-grid, .routes-grid, .fleet-grid, .calc__tariffs, .contacts-grid, .site-footer__top) > * {
+/* Резиновый макет: дети flex/grid контейнеров должны уметь ужиматься.
+   Шапку НЕ трогаем — у её детей фиксированная роль (бренд/nav/right),
+   min-width: 0 ломает space-between. */
+:where(.container, .grid, .grid--3, .grid--4, .cluster, .calc, .hero__inner, .reviews-grid, .routes-grid, .fleet-grid, .calc__tariffs, .contacts-grid, .site-footer__top) > * {
   min-width: 0;
   min-height: 0;
 }

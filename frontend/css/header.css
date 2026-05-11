@@ -139,27 +139,22 @@
   width: 44px; height: 44px;
   display: grid;
   place-items: center;
-  border-radius: var(--r-md);
-  color: inherit;
-  /* Лёгкая «таблетка» с границей, чтобы кнопка не сливалась с фоном
-     в обоих состояниях (тёмный hero и светлая scrolled-шапка) */
-  background: rgba(255, 255, 255, 0.10);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--r-sm);
+  background: transparent;
+  border: 0;
   cursor: pointer;
-  transition: background var(--dur-base), border-color var(--dur-base);
+  /* Цвет линий — белый по умолчанию (шапка над тёмным hero),
+     тёмный когда шапка стала светлой при скролле */
+  color: var(--c-white);
+  transition: color var(--dur-base);
 }
 .site-header.is-scrolled .btn-burger,
 .site-header--solid .btn-burger {
-  background: rgba(15, 15, 30, 0.06);
-  border-color: rgba(15, 15, 30, 0.18);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  color: var(--c-text);
 }
 @media (min-width: 1024px) { .btn-burger { display: none; } }
 
-.btn-burger__lines { position: relative; width: 22px; height: 16px; }
+.btn-burger__lines { position: relative; width: 24px; height: 18px; }
 .btn-burger__lines::before,
 .btn-burger__lines::after,
 .btn-burger__lines span {
@@ -168,7 +163,7 @@
   position: absolute;
   left: 0;
   width: 100%;
-  height: 2.5px;
+  height: 3px;
   background: currentColor;
   border-radius: 2px;
   transition: all var(--dur-base);
@@ -229,7 +224,7 @@
   position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: var(--z-sticky);
-  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
   background: rgba(15, 15, 30, 0.94);
   backdrop-filter: blur(24px) saturate(1.4);
   -webkit-backdrop-filter: blur(24px) saturate(1.4);
@@ -238,11 +233,17 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  transform: translateY(110%);
-  transition: transform var(--dur-base) var(--ease-out-quart);
+  /* Двойной механизм скрытия — opacity + translateY,
+     так надёжнее на iOS Safari */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity var(--dur-base), transform var(--dur-base), visibility var(--dur-base);
   pointer-events: none;
 }
 .sticky-cta.is-visible {
+  opacity: 1;
+  visibility: visible;
   transform: translateY(0);
   pointer-events: auto;
 }
