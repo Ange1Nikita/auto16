@@ -14,8 +14,15 @@
     background var(--dur-base) var(--ease-out-quart),
     box-shadow var(--dur-base) var(--ease-out-quart),
     color var(--dur-base) var(--ease-out-quart),
-    border-color var(--dur-base) var(--ease-out-quart);
+    border-color var(--dur-base) var(--ease-out-quart),
+    transform var(--dur-base) var(--ease-out-quart);
   border-bottom: 1px solid transparent;
+  will-change: transform;
+}
+
+/* На мобилке прячем шапку при прокрутке вниз */
+@media (max-width: 1023px) {
+  .site-header.is-hidden { transform: translateY(-110%); }
 }
 
 .site-header__inner {
