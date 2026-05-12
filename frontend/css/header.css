@@ -89,13 +89,6 @@
 .site-header.is-scrolled .site-header__tagline,
 .site-header--solid .site-header__tagline { font-size: 13px; opacity: 0.7; }
 .site-nav { flex-shrink: 0; }
-/* На тёмном фоне инвертируем чёрный лого в белый */
-.site-header--on-dark .logo img,
-.mobile-menu .logo img,
-.site-footer .logo img,
-.cta-final .logo img { filter: invert(1) brightness(2); }
-.site-header.is-scrolled .logo img,
-.site-header--solid .logo img { filter: none; }
 
 /* Nav */
 .site-nav {

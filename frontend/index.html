@@ -89,12 +89,9 @@
         <div class="hero__content">
           <span class="eyebrow eyebrow--light">Пассажирские перевозки · с 2014 года</span>
           <h1 class="hero__headline">
-            Перевезём <em>между городами</em><br>
-            быстро и безопасно
+            Поездки между городами —<br>
+            <em>комфорт на каждом километре</em>
           </h1>
-          <p class="hero__lead">
-            Рассчитайте стоимость на карте, выберите класс авто и оставьте заявку — диспетчер перезвонит за 15 минут.
-          </p>
           <div class="hero__actions">
             <a class="btn btn--primary btn--lg" href="#calculator">
               Рассчитать стоимость
@@ -109,12 +106,12 @@
               <span class="hero__trust-label">лет на рынке</span>
             </div>
             <div class="hero__trust-item">
-              <span class="hero__trust-value" data-count="5000" data-count-suffix="+">0</span>
+              <span class="hero__trust-value" data-count="30000" data-count-suffix="+">0</span>
               <span class="hero__trust-label">поездок</span>
             </div>
             <div class="hero__trust-item">
-              <span class="hero__trust-value" data-count="5">0</span>
-              <span class="hero__trust-label">мин до подачи</span>
+              <span class="hero__trust-value"><span class="hero__trust-prefix">От </span><span data-count="5">0</span></span>
+              <span class="hero__trust-label">минут до подачи</span>
             </div>
             <div class="hero__trust-item">
               <span class="hero__trust-value" data-count="24" data-count-suffix="/7">0</span>
@@ -206,7 +203,7 @@
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11H1l8-8 8 8h-8v10"/></svg>
             </div>
             <h3 class="adv-card__title">Безналичный расчёт</h3>
-            <p class="adv-card__desc">Карты, СБП, расчёт по договору для юрлиц с предоставлением закрывающих документов.</p>
+            <p class="adv-card__desc">Переводы, СБП, расчёт по договору для юрлиц с предоставлением закрывающих документов.</p>
           </div>
         </div>
       </div>
@@ -224,7 +221,7 @@
         <div class="grid grid--3" data-reveal-stagger>
           <article class="tariff-card">
             <div class="tariff-card__visual">
-              <img src="assets/cars/polo/1.jpg" alt="VW Polo" loading="lazy">
+              <img src="assets/tariffs/standart.jpg" alt="Тариф Стандарт" loading="lazy">
             </div>
             <h3 class="tariff-card__name">Стандарт</h3>
             <p class="tariff-card__desc">Solaris, Rio, Polo, Vesta — для 1–3 пассажиров</p>
@@ -247,7 +244,7 @@
 
           <article class="tariff-card">
             <div class="tariff-card__visual">
-              <img src="assets/cars/passat/1.jpg" alt="VW Passat" loading="lazy">
+              <img src="assets/tariffs/comfort.jpg" alt="Тариф Комфорт" loading="lazy">
             </div>
             <h3 class="tariff-card__name">Комфорт</h3>
             <p class="tariff-card__desc">Cerato, Octavia, Sonata, Passat — для 1–4 пассажиров</p>
@@ -275,7 +272,7 @@
           <article class="tariff-card tariff-card--recommended">
             <span class="badge badge--amber tariff-card__badge">Чаще выбирают</span>
             <div class="tariff-card__visual">
-              <img src="assets/cars/k5/1.jpg" alt="Kia K5" loading="lazy">
+              <img src="assets/tariffs/comfort-plus.png" alt="Тариф Комфорт+" loading="lazy">
             </div>
             <h3 class="tariff-card__name">Комфорт+</h3>
             <p class="tariff-card__desc">Camry, K5 — премиум-седаны для 1–4 пассажиров</p>
@@ -302,7 +299,7 @@
 
           <article class="tariff-card">
             <div class="tariff-card__visual">
-              <img src="assets/cars/zafira/1.jpg" alt="Opel Zafira" loading="lazy">
+              <img src="assets/tariffs/compact-van.jpg" alt="Тариф Компактвэн" loading="lazy">
             </div>
             <h3 class="tariff-card__name">Компактвэн</h3>
             <p class="tariff-card__desc">Opel Zafira и аналоги — для 4–5 пассажиров с багажом</p>
@@ -329,7 +326,7 @@
 
           <article class="tariff-card">
             <div class="tariff-card__visual">
-              <img src="assets/cars/palisade/1.jpg" alt="Hyundai Palisade" loading="lazy">
+              <img src="assets/tariffs/minivan.jpg" alt="Тариф Минивэн" loading="lazy">
             </div>
             <h3 class="tariff-card__name">Минивэн</h3>
             <p class="tariff-card__desc">Hyundai Palisade — для группы 6–8 человек</p>
@@ -356,10 +353,10 @@
 
           <article class="tariff-card">
             <div class="tariff-card__visual">
-              <img src="assets/cars/bmw-5/1.jpg" alt="BMW 5 серии" loading="lazy">
+              <img src="assets/tariffs/business.jpg" alt="Тариф Бизнес" loading="lazy">
             </div>
             <h3 class="tariff-card__name">Бизнес</h3>
-            <p class="tariff-card__desc">BMW 5, Audi A6, Mercedes GLC — для VIP и переговоров</p>
+            <p class="tariff-card__desc">BMW 5, Audi A6, Mercedes GLC, Mercedes E-class — для VIP и переговоров</p>
             <div class="tariff-card__price">
               <span class="tariff-card__price-prefix">от</span>
               <span class="tariff-card__price-value">50</span>
@@ -385,13 +382,13 @@
         <!-- Премиум — отдельным акцентным блоком -->
         <div class="tariff-premium" data-reveal>
           <div class="tariff-premium__visual">
-            <img src="assets/cars/e-class/1.jpg" alt="Mercedes E-class" loading="lazy">
+            <img src="assets/tariffs/premium.jpg" alt="Тариф Премиум" loading="lazy">
           </div>
           <div class="tariff-premium__content">
             <span class="badge badge--amber">👑 Премиум-класс</span>
             <h3 class="tariff-premium__name">Премиум</h3>
             <p class="tariff-premium__desc">
-              Mercedes-Maybach, Mercedes E-class — флагманские седаны для встреч, переговоров,
+              Mercedes-Maybach, Mercedes S-class — флагманские седаны для встреч, переговоров,
               трансферов VIP-гостей. Дресс-код водителя, Wi-Fi, минибар, премиум-салон.
             </p>
             <div class="tariff-premium__footer">
@@ -419,97 +416,129 @@
         <div class="routes-grid" data-reveal-stagger>
           <a class="route-card" href="#calculator">
             <div class="route-card__head">
-              <span class="route-card__city">Краснодар</span>
+              <span class="route-card__city">Казань</span>
               <svg class="route-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <span class="route-card__city">Сочи</span>
+              <span class="route-card__city">Москва</span>
             </div>
             <div class="route-card__meta">
-              <span>≈ 310 км</span>
-              <span>≈ 5 ч в пути</span>
+              <span>≈ 820 км</span>
+              <span>≈ 12 ч в пути</span>
             </div>
             <div class="route-card__price">
               <span class="route-card__price-from">от</span>
-              <span class="route-card__price-value">7 750&nbsp;₽</span>
+              <span class="route-card__price-value">20 500&nbsp;₽</span>
             </div>
           </a>
 
           <a class="route-card" href="#calculator">
             <div class="route-card__head">
-              <span class="route-card__city">Краснодар</span>
+              <span class="route-card__city">Казань</span>
               <svg class="route-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <span class="route-card__city">Анапа</span>
+              <span class="route-card__city">Нижний Новгород</span>
             </div>
             <div class="route-card__meta">
-              <span>≈ 155 км</span>
-              <span>≈ 2 ч в пути</span>
+              <span>≈ 395 км</span>
+              <span>≈ 6 ч в пути</span>
             </div>
             <div class="route-card__price">
               <span class="route-card__price-from">от</span>
-              <span class="route-card__price-value">3 875&nbsp;₽</span>
+              <span class="route-card__price-value">9 875&nbsp;₽</span>
             </div>
           </a>
 
           <a class="route-card" href="#calculator">
             <div class="route-card__head">
-              <span class="route-card__city">Краснодар</span>
+              <span class="route-card__city">Казань</span>
               <svg class="route-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <span class="route-card__city">Геленджик</span>
+              <span class="route-card__city">Самара</span>
             </div>
             <div class="route-card__meta">
-              <span>≈ 156 км</span>
-              <span>≈ 2 ч 20 мин</span>
-            </div>
-            <div class="route-card__price">
-              <span class="route-card__price-from">от</span>
-              <span class="route-card__price-value">3 900&nbsp;₽</span>
-            </div>
-          </a>
-
-          <a class="route-card" href="#calculator">
-            <div class="route-card__head">
-              <span class="route-card__city">Краснодар</span>
-              <svg class="route-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <span class="route-card__city">Новороссийск</span>
-            </div>
-            <div class="route-card__meta">
-              <span>≈ 135 км</span>
-              <span>≈ 1 ч 50 мин</span>
-            </div>
-            <div class="route-card__price">
-              <span class="route-card__price-from">от</span>
-              <span class="route-card__price-value">3 375&nbsp;₽</span>
-            </div>
-          </a>
-
-          <a class="route-card" href="#calculator">
-            <div class="route-card__head">
-              <span class="route-card__city">Краснодар</span>
-              <svg class="route-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <span class="route-card__city">Ростов-на-Дону</span>
-            </div>
-            <div class="route-card__meta">
-              <span>≈ 275 км</span>
-              <span>≈ 4 ч в пути</span>
-            </div>
-            <div class="route-card__price">
-              <span class="route-card__price-from">от</span>
-              <span class="route-card__price-value">6 875&nbsp;₽</span>
-            </div>
-          </a>
-
-          <a class="route-card" href="#calculator">
-            <div class="route-card__head">
-              <span class="route-card__city">Краснодар</span>
-              <svg class="route-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              <span class="route-card__city">Минеральные Воды</span>
-            </div>
-            <div class="route-card__meta">
-              <span>≈ 390 км</span>
+              <span>≈ 365 км</span>
               <span>≈ 5 ч 30 мин</span>
             </div>
             <div class="route-card__price">
               <span class="route-card__price-from">от</span>
-              <span class="route-card__price-value">9 750&nbsp;₽</span>
+              <span class="route-card__price-value">9 125&nbsp;₽</span>
+            </div>
+          </a>
+
+          <a class="route-card" href="#calculator">
+            <div class="route-card__head">
+              <span class="route-card__city">Казань</span>
+              <svg class="route-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <span class="route-card__city">Уфа</span>
+            </div>
+            <div class="route-card__meta">
+              <span>≈ 525 км</span>
+              <span>≈ 8 ч в пути</span>
+            </div>
+            <div class="route-card__price">
+              <span class="route-card__price-from">от</span>
+              <span class="route-card__price-value">13 125&nbsp;₽</span>
+            </div>
+          </a>
+
+          <a class="route-card" href="#calculator">
+            <div class="route-card__head">
+              <span class="route-card__city">Казань</span>
+              <svg class="route-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <span class="route-card__city">Чебоксары</span>
+            </div>
+            <div class="route-card__meta">
+              <span>≈ 140 км</span>
+              <span>≈ 2 ч в пути</span>
+            </div>
+            <div class="route-card__price">
+              <span class="route-card__price-from">от</span>
+              <span class="route-card__price-value">3 500&nbsp;₽</span>
+            </div>
+          </a>
+
+          <a class="route-card" href="#calculator">
+            <div class="route-card__head">
+              <span class="route-card__city">Казань</span>
+              <svg class="route-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <span class="route-card__city">Ульяновск</span>
+            </div>
+            <div class="route-card__meta">
+              <span>≈ 220 км</span>
+              <span>≈ 3 ч 30 мин</span>
+            </div>
+            <div class="route-card__price">
+              <span class="route-card__price-from">от</span>
+              <span class="route-card__price-value">5 500&nbsp;₽</span>
+            </div>
+          </a>
+
+          <a class="route-card" href="#calculator">
+            <div class="route-card__head">
+              <span class="route-card__city">Москва</span>
+              <svg class="route-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <span class="route-card__city">Санкт-Петербург</span>
+            </div>
+            <div class="route-card__meta">
+              <span>≈ 705 км</span>
+              <span>≈ 9 ч в пути</span>
+            </div>
+            <div class="route-card__price">
+              <span class="route-card__price-from">от</span>
+              <span class="route-card__price-value">17 625&nbsp;₽</span>
+            </div>
+          </a>
+
+          <a class="route-card" href="#calculator">
+            <div class="route-card__head">
+              <span class="route-card__city">Нижний Новгород</span>
+              <svg class="route-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <span class="route-card__city">Москва</span>
+            </div>
+            <div class="route-card__meta">
+              <span>≈ 425 км</span>
+              <span>≈ 6 ч 30 мин</span>
+            </div>
+            <div class="route-card__price">
+              <span class="route-card__price-from">от</span>
+              <span class="route-card__price-value">10 625&nbsp;₽</span>
             </div>
           </a>
         </div>
@@ -553,7 +582,7 @@
 
             <p class="calc__notice">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              Принимаем только <b>межгородние поездки</b> По городу не возим — для такси внутри города воспользуйтесь Яндекс.Go.
+              Принимаем только <b>межгородние поездки</b>
             </p>
 
             <div class="field">
@@ -617,10 +646,18 @@
                 <span class="calc__summary-label">Тариф</span>
                 <span class="calc__summary-value" data-summary-rate>35 ₽/км · Комфорт+</span>
               </div>
+              <div class="calc__summary-row calc__summary-row--stack">
+                <span class="calc__summary-label">Маршрут</span>
+                <span class="calc__summary-value calc__summary-value--placeholder" data-summary-route>—</span>
+              </div>
               <div class="calc__summary-total">
                 <span class="calc__summary-total-label">Стоимость поездки</span>
                 <span class="calc__summary-total-value calc__summary-total-value--zero" data-summary-total>0 ₽</span>
               </div>
+              <p class="calc__summary-prepay">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Поездка без предоплаты
+              </p>
               <p class="calc__summary-hint" data-summary-hint>Введите адреса — стоимость рассчитается автоматически</p>
             </div>
 
@@ -829,33 +866,6 @@
                 <a class="contacts-row__value" href="tel:+79518911618">8 (951) 891-16-18</a>
               </div>
             </div>
-            <div class="contacts-row">
-              <div class="contacts-row__icon">
-                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </div>
-              <div>
-                <div class="contacts-row__label">Email</div>
-                <a class="contacts-row__value" href="mailto:order@fara.ru" style="font-size: var(--fs-body);">order@fara.ru</a>
-              </div>
-            </div>
-            <div class="contacts-row">
-              <div class="contacts-row__icon">
-                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              </div>
-              <div>
-                <div class="contacts-row__label">Офис</div>
-                <span class="contacts-row__value" style="font-size: var(--fs-body);">Краснодар, ул. Северная 326</span>
-              </div>
-            </div>
-            <div class="contacts-row">
-              <div class="contacts-row__icon">
-                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
-              <div>
-                <div class="contacts-row__label">Реквизиты</div>
-                <span class="contacts-row__value" style="font-size: var(--fs-body); font-feature-settings: 'tnum';">ИНН 2310123456 · ОГРН 1142310123456</span>
-              </div>
-            </div>
           </div>
 
           <div>
@@ -926,20 +936,23 @@
             <div class="footer-contacts__phones">
               <a href="tel:+79518911618">8 (951) 891-16-18</a>
             </div>
-            <div class="footer-contacts__row">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              order@fara.ru
-            </div>
-            <div class="footer-contacts__row">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Краснодар, ул. Северная 326
+            <div class="footer-socials">
+              <a class="footer-social" href="https://wa.me/message/YZZU3HWVDRQQK1" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <img src="assets/social/whatsapp.svg" alt="WhatsApp" loading="lazy">
+              </a>
+              <a class="footer-social" href="https://max.ru/u/f9LHodD0cOILHQHQ6hMT79eYm9V34TXXgJSu71G3qPNjzNDVQ5T1UzwZelE" target="_blank" rel="noopener" aria-label="MAX">
+                <img src="assets/social/max.png" alt="MAX" loading="lazy">
+              </a>
+              <a class="footer-social" href="https://t.me/taxifara" target="_blank" rel="noopener" aria-label="Telegram">
+                <img src="assets/social/telegram.png" alt="Telegram" loading="lazy">
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       <div class="site-footer__bottom">
-        <span>© 2014–2026 FARA. ИНН 2310123456</span>
+        <span>© 2014–2026 FARA</span>
         <div class="site-footer__legal">
           <a href="/privacy">Политика</a>
           <a href="/oferta">Оферта</a>

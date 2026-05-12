@@ -12,14 +12,14 @@
   color: var(--c-white);
   overflow: hidden;
   padding-top: calc(var(--header-h) + var(--s-12));
-  padding-bottom: var(--s-20);
+  padding-bottom: var(--s-10);
 }
 @media (min-width: 1024px) {
   .hero {
     /* Десктоп: премиум-градиент с диагональю и боковыми бликами */
     background: var(--grad-hero);
     padding-top: calc(var(--header-h) + var(--s-20));
-    padding-bottom: var(--s-32);
+    padding-bottom: var(--s-16);
   }
 }
 
@@ -55,7 +55,7 @@
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--s-12);
+  gap: var(--s-6);
   align-items: center;
 }
 @media (min-width: 1024px) {
@@ -65,15 +65,18 @@
 .hero__content {
   display: flex;
   flex-direction: column;
-  gap: var(--s-6);
+  gap: var(--s-5);
   max-width: 640px;
+}
+@media (min-width: 1024px) {
+  .hero__content { gap: var(--s-6); }
 }
 
 .hero__headline {
-  font-size: var(--fs-display-1);
-  line-height: 1;
+  font-size: clamp(1.75rem, 5.5vw + 0.5rem, 5.5rem);
+  line-height: 1.05;
   font-weight: var(--fw-bold);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 .hero__headline em {
@@ -99,14 +102,18 @@
 }
 
 .hero__trust {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--s-4);
-  margin-top: var(--s-8);
-  padding-top: var(--s-6);
-  border-top: 1px solid hsl(0 0% 100% / 0.12);
+  display: none;
 }
-@media (min-width: 768px) { .hero__trust { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1024px) {
+  .hero__trust {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--s-4);
+    margin-top: var(--s-8);
+    padding-top: var(--s-6);
+    border-top: 1px solid hsl(0 0% 100% / 0.12);
+  }
+}
 
 .hero__trust-item { display: flex; flex-direction: column; gap: var(--s-1); }
 .hero__trust-value {
@@ -115,6 +122,13 @@
   letter-spacing: -0.01em;
   color: var(--c-white);
   font-feature-settings: 'tnum';
+}
+.hero__trust-prefix {
+  font-size: 0.65em;
+  font-weight: var(--fw-medium);
+  letter-spacing: 0;
+  margin-right: 2px;
+  opacity: 0.85;
 }
 .hero__trust-label { font-size: var(--fs-caption); color: var(--c-stone-300); }
 

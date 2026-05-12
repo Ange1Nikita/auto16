@@ -194,16 +194,17 @@ function setupSuggest(input, suggestEl, statusEl, isFrom) {
       if (!obj) throw new Error('not geocoded');
       const coords = obj.geometry.getCoordinates();
       const fullName = obj.getAddressLine();
+      const shortName = buildShortAddress(obj, fullName);
       const localities = (typeof obj.getLocalities === 'function' ? obj.getLocalities() : []) || [];
       const locality = (localities[0] || '').toString().trim().toLowerCase();
-      const addr = { name: fullName, coords, locality };
+      const addr = { name: shortName, fullName, coords, locality };
       if (isFrom) state.fromAddr = addr;
       else state.toAddr = addr;
       lastResolvedQuery = input.value.trim();
-      input.value = fullName; // нормализуем
-      lastResolvedQuery = fullName;
+      input.value = shortName; // нормализуем в короткий вид
+      lastResolvedQuery = shortName;
       setInputStatus('ok');
-      console.log(`[calc] ${isFrom ? 'FROM' : 'TO'}:`, fullName, coords, `[city: ${locality || '—'}]`);
+      console.log(`[calc] ${isFrom ? 'FROM' : 'TO'}:`, shortName, coords, `[city: ${locality || '—'}]`);
       tryBuildRoute();
     } catch (e) {
       console.error('[calc] geocode error', e);
@@ -379,6 +380,19 @@ function updateSummary() {
   }
   // Тариф (показываем только название, без цены за км)
   setText('[data-summary-rate]', state.tariffName);
+  // Маршрут (полные адреса откуда → куда)
+  const routeEl = document.querySelector('[data-summary-route]');
+  if (routeEl) {
+    const from = state.fromAddr?.name;
+    const to = state.toAddr?.name;
+    if (from || to) {
+      routeEl.innerHTML = `${escapeHtml(from || '—')} <span style="opacity:.6">→</span> ${escapeHtml(to || '—')}`;
+      routeEl.classList.toggle('calc__summary-value--placeholder', !(from && to));
+    } else {
+      routeEl.textContent = '—';
+      routeEl.classList.add('calc__summary-value--placeholder');
+    }
+  }
   // Итого — без слова «от»
   const totalEl = document.querySelector('[data-summary-total]');
   if (totalEl) {
@@ -412,6 +426,28 @@ function formatRub(n) { return n.toLocaleString('ru-RU') + ' ₽'; }
 function setText(sel, text) { const el = document.querySelector(sel); if (el) el.textContent = text; }
 function escapeHtml(s) {
   return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/* Короткий адрес: «Город, Улица, Дом» — без страны/региона/округа.
+   Fallback: POI-имя или полный адрес, если структурных полей нет. */
+function buildShortAddress(obj, fullName) {
+  const get = (fn) => {
+    try { return (typeof obj[fn] === 'function' ? obj[fn]() : '') || ''; }
+    catch { return ''; }
+  };
+  const localities = get('getLocalities');
+  const city = Array.isArray(localities) ? (localities[0] || '') : (localities || '');
+  const street = get('getThoroughfare');
+  const house = get('getPremiseNumber') || get('getPremise');
+  const poi = (obj.properties && typeof obj.properties.get === 'function')
+    ? (obj.properties.get('name', '') || '')
+    : '';
+
+  if (street) return [city, street, house].filter(Boolean).join(', ');
+  if (poi && poi.toLowerCase() !== String(city).toLowerCase()) {
+    return city ? `${city}, ${poi}` : poi;
+  }
+  return city || fullName;
 }
 
 /* === Submit === */

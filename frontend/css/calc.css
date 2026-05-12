@@ -37,7 +37,7 @@
 /* Уведомление: только межгородние */
 .calc__notice {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--s-2);
   margin-top: -8px;
   padding: 10px 12px;
@@ -46,11 +46,11 @@
   border-radius: var(--r-md);
   font-size: var(--fs-caption);
   color: hsl(38 80% 25%);
+  white-space: nowrap;
   line-height: 1.4;
 }
 .calc__notice svg {
   flex-shrink: 0;
-  margin-top: 1px;
   color: hsl(38 90% 45%);
 }
 .calc__notice b { color: hsl(38 80% 20%); font-weight: var(--fw-semibold); }
@@ -198,6 +198,18 @@
 }
 .calc__summary-value--placeholder { color: var(--c-graphite-500); }
 
+.calc__summary-row--stack {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.calc__summary-row--stack .calc__summary-value {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+  font-weight: var(--fw-medium);
+}
+
 .calc__summary-total {
   display: flex;
   justify-content: space-between;
@@ -216,15 +228,31 @@
   font-size: var(--fs-caption);
 }
 .calc__summary-total-value {
-  font-size: var(--fs-display-2);
+  font-size: var(--fs-h1);
   line-height: 1;
   font-weight: var(--fw-bold);
   color: var(--c-amber-500);
   font-feature-settings: 'tnum';
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   transition: color var(--dur-base);
 }
 .calc__summary-total-value--zero { color: var(--c-graphite-500); }
+
+.calc__summary-prepay {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--s-2);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--c-amber-500);
+  position: relative;
+}
+.calc__summary-prepay .icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
 
 .calc__summary-hint {
   font-size: var(--fs-caption);
